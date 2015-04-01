@@ -1,0 +1,56 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html charset=utf-8">
+<style type="text/css">
+
+</style>
+</head>
+
+<body>
+<form id="myForm">
+<input type="text" width="100px"/>
+<button type="submit" name="sb">提交</button>
+</form>
+<script type="text/javascript">
+var EventUtil={
+  addHandler:function(element,type,handler)
+  {
+	if (element.addEventListener){
+	  element.addEventListener(type,handler,false);
+	}
+	else if(element.attachEvent){
+	  element.attachEvent('on'+type,handler);
+	}
+	else {element['on'+type]=handler;}
+  },
+  
+  getEvent:function(event){
+  return event ? event:window.event;
+  },
+  
+  getCharCode:function(event){
+    if (typeof event.charCode == "number"){
+	  return event.charCode;
+	}
+	else {return event.keyCode;}
+  },
+  getTarget:function(event){
+    return event.target||event.srcElement;
+	}
+};
+EventUtil.addHandler(window,"load",function(event){
+  document.forms[0].elements[0].focus();
+  alert("focus");
+  });
+var form = document.getElementById("myForm");
+EventUtil.addHandler(form,"submit",function(event){
+  event = EventUtil.getEvent(event);
+  var tar = EventUtil.getTarget(event);
+  //alert(tar.id);  //myForm
+  var butt = tar.elements["sb"];
+  butt.disabled=true;
+  //alert("disabled");
+  });
+  
+</script>
+</body>
+</html>
