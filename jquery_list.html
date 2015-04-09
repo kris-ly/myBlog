@@ -1,0 +1,133 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js" type="text/javascript"></script>
+<style type="text/css">
+body{
+font-size:15px;
+}
+.menu{
+width:150px;
+height:150px;
+background:rgba(225,225,225,0.5);
+border:#333 2px solid;
+}
+.fly{
+line-height:25px;
+}
+ul,li{
+padding:0px;
+margin:0px;
+list-style-type:none;
+}
+.optn{
+width:150px;
+height:30px;
+line-height:30px;
+border-top: #333 1px dashed;
+
+}
+.tips{
+width:120px;
+height:110px;
+border: #333 2px solid;
+display:none;
+background:#333;
+position:absolute;
+}
+.tips li{
+color:#eee;
+line-height:22px;
+width:120px;
+}
+.optnFoc{
+background:#fff;
+font-weight:bold;
+}
+.liFoc{
+background:#999;
+font-weight:bold;
+}
+</style>
+
+<script type="text/javascript">
+$(function(){
+	var curY,//当前top
+			curH,//当前高度
+			curW,//当前宽度
+			objL;//当前操作对象
+	function getPos(obj){
+		curY = obj.offset().top;
+		curH = obj.height();
+		curW = obj.width();
+	}
+	$(".optn").mouseover(function(){
+		objL = $(this);
+		getPos(objL);
+		var allY = curY - curH + "px";
+		objL.addClass("optnFoc");
+		objL.next("ul").show()
+		.css({"top":allY,"left":curW});
+	})
+	.mouseout(function(){
+		$(this).removeClass("optnFoc");
+		$(this).next("ul").hide();
+	});
+	$(".tips").mouseover(function(){
+		$(this).show();
+		$(this).prev("li").addClass("optnFoc");
+	})
+	.mouseout(function(){
+		$(this).hide();
+		$(this).prev("li").removeClass("optnFoc");
+	});
+	$(".tips li").mouseover(function(){
+		$(this).addClass("liFoc");
+	})
+	.mouseout(function(){
+		$(this).removeClass("liFoc");
+	});
+})
+</script>
+</head>
+
+<body>
+<div class="menu">
+<span class="fly"><b>电脑数码产品类</b></span>
+<ul class="content">
+	<li class="optn">笔记本</li>
+	<ul class="tips">
+		<li>笔记本1</li>
+		<li>笔记本2</li>
+		<li>笔记本3</li>
+		<li>笔记本4</li>
+		<li>笔记本5</li>
+	</ul>
+	<li class="optn">移动硬盘</li>
+	<ul class="tips">
+		<li>移动硬盘1</li>
+		<li>移动硬盘2</li>
+		<li>移动硬盘3</li>
+		<li>移动硬盘4</li>
+		<li>移动硬盘5</li>
+	</ul>
+	<li class="optn">电脑软件</li>
+	<ul class="tips">
+		<li>电脑软件1</li>
+		<li>电脑软件2</li>
+		<li>电脑软件3</li>
+		<li>电脑软件4</li>
+		<li>电脑软件5</li>
+	</ul>
+	<li class="optn">电脑软件</li>
+	<ul class="tips">
+		<li>电脑软件1</li>
+		<li>电脑软件2</li>
+		<li>电脑软件3</li>
+		<li>电脑软件4</li>
+		<li>电脑软件5</li>
+	</ul>
+</ul>
+</div>
+</body>
+</html>
