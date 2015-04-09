@@ -2,7 +2,8 @@
 <html>
 <head>
     <title>使用JSON和jQuery实现列表框三级联动</title>
-    <script src="JScript/jquery-1.8.2.min.js" type="text/javascript"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js" type="text/javascript"></script>
     <style type="text/css">
            body{font-size:13px}
            h3{ padding:0px; margin:8px 0px}
@@ -44,9 +45,9 @@
                 appendOptTo($s1, key, value.val, v1);
             });
             function appendOptTo(obj, key, val, d){
-							var $opt = $("<option>").text(key).value(val);
+							var $opt = $("<option>").text(key).val(val);
 							if(val== d){
-								$opt.attr("selected","true")
+								$opt.attr("selected","true");
 							}
 							obj.append($opt);
 						}
@@ -56,10 +57,10 @@
               if (this.selectedIndex == -1) return;
 							var s1_cur_val = this.options[this.selectedIndex].value;
 							var s1_cur_text = this.options[this.selectedIndex].text;
-							AreaData.each(function(key,value){
+							$.each(AreaData,function(key,value){
 								if(s1_cur_val == value.val){
 									if(value.items){
-										val.item.each(function(key1,value1){
+										$.each(value.items,function(key1,value1){
 											appendOptTo($s2, key1, value1.val, v2);
 										});
 									}
@@ -71,21 +72,20 @@
 						}).change();
 						
 						$s2.change(function(){
-							$s3.html("");
 							if (this.selectedIndex == -1) return;
 							var s1_cur_val = $s1[0].options[$s1[0].selectedIndex].value;
-							var s1_cur_text = $s1[0].options[$s1[0].selectedIndex].text;
 							var s2_cur_val = this.options[this.selectedIndex].value;
-							var s2_cur_text = this.options[this.selectedIndex].text;
-							AreaData.each(function(key,value){
+							$.each(AreaData,function(key,value){
 								if(s1_cur_val == value.val){
-									value.items.each(function(key1,value1){
-										if(s2_cur_val == value1.val){
-											value1.items.each(function(key2,value3){
-												appendOptTo($s3, key2,value3, v3);
-											});	
+									if(value.items){
+										$.each(value.items,function(key1,value1){
+											if(s2_cur_val == value1.val){
+												$.each(value1.items,function(key2,value3){
+													appendOptTo($s3, key2,value3, v3);
+												});	
 											}
-									});
+										});
+									}
 								}
 							});
 							showChangeItem();
