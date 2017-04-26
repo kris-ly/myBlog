@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>懒加载</title>
+<style>
+div{float:left; min-width:150px; min-height:150px;}
+</style>
+</head>
+<body>
+<div><img src="loading.gif" lazy-src="1.jpg" alt=""></div>
+<div><img src="loading.gif" lazy-src="2.jpg" alt=""></div>
+<div><img src="loading.gif" lazy-src="3.jpg" alt=""></div>
+<div><img src="loading.gif" lazy-src="4.jpg" alt=""></div>
+<div><img src="loading.gif" lazy-src="5.jpg" alt=""></div>
+<div><img src="loading.gif" lazy-src="6.jpg" alt=""></div>
+<div><img src="loading.gif" lazy-src="7.jpg" alt=""></div>
+<div><img src="loading.gif" lazy-src="8.jpg" alt=""></div>
+<div><img src="loading.gif" lazy-src="9.jpg" alt=""></div>
+<div><img src="loading.gif" lazy-src="10.jpg" alt=""></div>
+<div><img src="loading.gif" lazy-src="11.jpg" alt=""></div>
+<div><img src="loading.gif" lazy-src="12.jpg" alt=""></div>
+<div><img src="loading.gif" lazy-src="13.jpg" alt=""></div>
+<div><img src="loading.gif" lazy-src="14.jpg" alt=""></div>
+<div><img src="loading.gif" lazy-src="15.jpg" alt=""></div>
+<div><img src="loading.gif" lazy-src="16.jpg" alt=""></div>
+<div><img src="loading.gif" lazy-src="17.jpg" alt=""></div>
+<div><img src="loading.gif" lazy-src="18.jpg" alt=""></div>
+<div><img src="loading.gif" lazy-src="19.jpg" alt=""></div>
+<div><img src="loading.gif" lazy-src="20.jpg" alt=""></div>
+<div><img src="loading.gif" lazy-src="21.jpg" alt=""></div>
+<div><img src="loading.gif" lazy-src="22.jpg" alt=""></div>
+<div><img src="loading.gif" lazy-src="23.jpg" alt=""></div>
+<div><img src="loading.gif" lazy-src="24.jpg" alt=""></div>
+<div><img src="loading.gif" lazy-src="25.jpg" alt=""></div>
+<div><img src="loading.gif" lazy-src="26.jpg" alt=""></div>
+<div><img src="loading.gif" lazy-src="27.jpg" alt=""></div>
+<div><img src="loading.gif" lazy-src="28.jpg" alt=""></div>
+<div><img src="loading.gif" lazy-src="29.jpg" alt=""></div>
+<div><img src="loading.gif" lazy-src="30.jpg" alt=""></div>
+<div><img src="loading.gif" lazy-src="31.jpg" alt=""></div>
+<div><img src="loading.gif" lazy-src="32.jpg" alt=""></div>
+<div><img src="loading.gif" lazy-src="33.jpg" alt=""></div>
+<div><img src="loading.gif" lazy-src="34.jpg" alt=""></div>
+<div><img src="loading.gif" lazy-src="35.jpg" alt=""></div>
+</body>
+</html>
+<script>
+function getTop(E1){
+	var top = 0; 
+	do{
+		top  += E1.offsetTop;
+	}while((E1 = E1.offsetParent).nodeName != 'BODY');
+	return top;
+};
+function lazy(){
+	var doc = document;
+	var top = doc.documentElement.scrollTop || doc.body.scrollTop;		//滚动条到顶部的高度
+	var winH = doc.documentElement.clientHeight||doc.body.clientHeight;	//可视窗口的高度
+	var imgs = doc.getElementsByTagName("img");
+	for(var i = 0; i < imgs.length; i ++){
+		var trueSrc = imgs[i].getAttribute("lazy-src");
+		if(trueSrc !== imgs[i].src){
+			var imgTop = getTop(imgs[i]);
+			if (imgTop > top && imgTop < top + winH){
+				imgs[i].src = trueSrc;
+			}
+		}
+	}
+};
+lazy();//判断页面打开时的第一屏是否有需要加载的图
+window.onscroll = function(){//onscroll,onload,onresize只能这样添加
+	lazy();
+}
+</script>
