@@ -5,13 +5,13 @@
 
 ### 一些demo
 1. 双飞翼的实现
-  > - [float实现](./float_flexable.html)
-  > - [position实现](./absolute_flexable.html)
-  > - [flex实现](./flex_flexable.html)
-2. [图片hover变大动画](./image_hover.html)
-3. [图片懒加载](./lazyLoad.html)
+  > - [float实现](./demos/float_flexable.html)
+  > - [position实现](./demos/absolute_flexable.html)
+  > - [flex实现](./demos/flex_flexable.html)
+2. [图片hover变大动画](./demos/image_hover.html)
+3. [图片懒加载](./demos/lazyLoad.html)
 4. css3
-  > - [3D旋转](./3d_rotate.html)
-  > - [css3实现翻页动画](./flip_over.html)
-  > - [css实现哆啦A梦](./Doraemon.html)
-  > - [canvas实现钟表](./canvas_clock.html)
+  > - [3D旋转](./demos/3d_rotate.html)
+  > - [css3实现翻页动画](./demos/flip_over.html)
+  > - [css实现哆啦A梦](./demos/Doraemon.html)
+  > - [canvas实现钟表](./demos/canvas_clock.html)
