@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>拍照上传</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <style type="text/css">
+        .img_prev{
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="login-section" class="m section-box" action="javascript:;">
+        <input type="file" id="input" onchange="handleFiles(this.files)">
+    </form>
+    <div id="imgPreview"></div>
+<script type="text/javascript" >
+    var imgEl = document.getElementById('imgPreview');
+    var handleFiles = function(files) {
+        var imageType = /^image\//;
+        if ( !imageType.test(files[0].type) ) return;
+        var img = document.createElement("img");
+        img.classList.add("img_prev");
+        img.file = files[0];
+        imgEl.appendChild(img);
+
+        var reader = new FileReader();
+        reader.onload = (function(aImg) {
+          return function(e) {
+            aImg.src = e.target.result;
+          };
+        })(img);
+        reader.readAsDataURL(files[0]);
+    }
+</script>
+</body>
+
+</html>

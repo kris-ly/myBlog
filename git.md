@@ -122,6 +122,7 @@ $ git branch -d dev
 - 创建+切换分支：git checkout -b <name>
 - 合并某分支到当前分支：git merge <name>
 - 删除分支：git branch -d <name>
+- 删除远程分支：git push origin --delete <name>
 
 ### 分支测量管理
 通常，合并分支时，如果可能，Git会用Fast forward模式，但这种模式下，删除分支后，会丢掉分支信息。
