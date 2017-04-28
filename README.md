@@ -15,8 +15,8 @@
   > - [css3实现翻页动画](./demos/flip_over.html)
   > - [css实现哆啦A梦](./demos/Doraemon.html)
   > - [canvas实现钟表](./demos/canvas_clock.html)
-5. [实现底部栏始终固定在页面底部](./stickyfooter.html)
-6. [js实现拍照上传功能](./photo_upload.html)
+5. [实现底部栏始终固定在页面底部](./demos/stickyfooter.html)
+6. [js实现拍照上传功能](./demos/photo_upload.html)
 
 ### js
 1. [promise实现lazyman](./js/lazyman.js)
