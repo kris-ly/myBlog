@@ -1,7 +1,8 @@
 整理之前学习前端时的笔记
 
 - [一些css的知识](./about_CSS.md)
-- [git命令](./git.md)
+- [git命令汇总](./git.md)
+- [webpack全指南（含webpack2）](./webpack.md)
 
 ### 一些demo
 1. 双飞翼的实现
@@ -20,3 +21,4 @@
 
 ### js
 1. [promise实现lazyman](./js/lazyman.js)
+2. [setTimeout & setInterval](./js/timer.md)
