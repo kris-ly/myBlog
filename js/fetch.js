@@ -45,7 +45,7 @@ const request = function request(url, params, isPost = false) {
 }
 
 // 用法示例
-request('http://www.example', { user: 'foo' })
+request('http://www.example.com', { user: 'foo' })
   .then(resp => { console.log(resp)})
   .catch(e => {console.log(e)})
 

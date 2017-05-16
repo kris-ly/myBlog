@@ -31,4 +31,5 @@
 - [webpack全指南（含webpack2）](./md/webpack.md)
 - [redux & react-redux](./md/redux.md)
 - [fetch实用封装](./js/fetch.js)
-- [react渲染性能提升(未完)](./md/speedupReact.md)
+- [react渲染性能提升](./md/speedupReact.md)
+- [知乎图片懒加载react实现](./md/reactLazyImg.md)

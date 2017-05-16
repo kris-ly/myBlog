@@ -288,7 +288,7 @@ dispatchWithLog(changeNum(2))
 > 比如我们想在dispatch函数里，添加自定义的callback，以便我们在每次触发action时，可以调用callback函数。
 
 ```javascript
-const callback = () => { //do somethine... }
+const callback = () => { //do something... }
 
 function enhanceDispatchWithCallback(store) {
     let next = store.dispatch
