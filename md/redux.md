@@ -1,22 +1,28 @@
-# 介绍
-## 1. 动机
+# redux、react-redux 及 redux中间件
+- [redux介绍](#redux介绍)
+- [redux基础](#redux基础)
+- [redux-react](#redux-react)
+- [redux中间件](#redux中间件)
+
+## redux介绍
+### 1. 动机
 
 1. 随着 JavaScript 单页应用开发日趋复杂，JavaScript 需要管理比任何时候都要多的 state （状态），包括服务器响应、缓存数据、本地生成尚未持久化到服务器的数据，也包括 UI 状态，如激活的路由，被选中的标签，是否显示加载动效或者分页器等等。
 2. 当初的目标是创建一个状态管理库，来提供最简化 API，但同时做到行为的完全可预测，因此才得以实现日志打印，热加载，时间旅行，同构应用，录制和重放，而不需要任何开发参与。
 
-## 2. 核心概念
+### 2. 核心概念
 1. Redux 基本思想：
 > - 可使用普通对象来描述应用的state：`{num: 1}`
 > - 要想更新 state 中的数据，你需要发起一个 action，Action 就是一个普通 JavaScript 对象,用来描述发生了什么：`{ type: 'CHANGE_NUM', result: 2 }`
 > - reducer函数把 action 和 state 串起来： `(oldState, action) => newState`——`({num: 1}, { type: 'CHANGE_NUM', result: 2 }) => {num: 2}`
 
-## 3. redux三个原则：
+### 3. redux三个原则：
 > - 单一数据源：整个应用的 state 被储存在一棵 object tree 中，并且这个 object tree 只存在于唯一一个 store 中。
 > - 惟一改变 state 的方法就是触发 action，action是一个用于描述已发生事件的普通对象。
 > - 为了描述 action 如何改变 state tree ，你需要编写纯函数 reducers来执行修改。
 
-# 基础
-## 1. Action
+## redux基础
+### 1. Action
 1. Action
 
 Action是把数据从应用传到 store 的有效载荷。它是 store 数据的唯一来源。一般来说你会通过 `store.dispatch()` 将 action 传到 store。
@@ -43,7 +49,7 @@ function changeNum(result) {
 ```
 > 这样做将使action创建函数更容易被移植和测试。
 
-## 2. Reducer
+### 2. Reducer
 Action 只是描述了有事情发生了这一事实，并没有指明应用如何更新state。而这正是 reducer 要做的事情。
 
 reducer 就是一个纯函数，接收旧的 state 和 action，返回新的 state。
@@ -87,7 +93,7 @@ const app = combineReducers({
   person,
 })
 ```
-## 3. Store
+### 3. Store
 Store 有以下职责：
 
 - 维持应用的 state；
@@ -146,7 +152,7 @@ store.dispatch(changeNum(3))
 ```
 
 
-## 4. redux & react
+## redux-react
 react更多的是view层，每个组件本身是通过props和state的更新来更新组件。state是各个组件内部的属性，外部无法较好的访问和控制。所以 redux 对 react app 状态的控制是通过 props 完成的。
 
 1. 将store注入组件
@@ -209,9 +215,9 @@ export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 > 注：一般只需要在渲染根组件时使用即可，这样做可以保证数据流从上至下的一致性。
 
-# 高级
+## redux中间件
 
-## 1. 异步Action
+### 1. 从异步Action说起
 
 * 当调用异步 API 时，有两个非常关键的时刻：发起请求的时刻，和接收到响应的时刻（也可能是超时）。
 * 而dispatch一个action返回普通对象时，state会立即改变，所以在使用异步api时，我们需要去写异步dispatch流程。
@@ -220,7 +226,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(App);
 * 当dispatch某个thunk函数时，这个函数会被 Redux Thunk middleware 执行。
 * 此时这个函数并不需要保持纯净；它还可以带有副作用，包括执行异步 API 请求。这个函数还可以 dispatch action，就像 dispatch 前面定义的同步 action 一样。
 
-## 2. Middleware
+### 2. Middleware详解
 
 Redux middleware提供的是位于 action 被发起之后，到达 reducer 之前的扩展点。 你可以利用 Redux middleware 来进行日志记录、创建崩溃报告、调用异步接口或者路由等等。
 

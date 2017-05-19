@@ -1,4 +1,10 @@
-### shouldComponentUpdate
+# react渲染性能提升
+- [shouldComponentUpdate](#shouldcomponentupdate)
+- [react-addons](#react-addons)
+- [re-render性能监测](#re-render性能监测)
+- [保持展示组件纯净](#保持展示组件纯净)
+
+## shouldComponentUpdate
 
 在接收到新的props或者state改变时，组件将进行重绘，如果你确定组件不需要渲染新的props或者state，则将改方法的返回值置为false，避免此次重绘。注意该方法只有在存在期才有效。
 
@@ -9,7 +15,7 @@
 - 将应该并列的组件写成了嵌套的形式。这会导致在更改父组件中与子组件无关的state属性时，也会触发子组件的重渲染。
 - 当props或者state比较庞大而render比较简单时，使用 shouldComponentUpdate 也得不偿失。
 
-### react-addons-pure-render-mixin & react-addons-shallow-compare
+## react-addons
 
 **react-addons-pure-render-mixin**
 
@@ -58,7 +64,7 @@ class ExampleComponent extends React.PureComponent {
 ```
 
 
-### re-render性能监测 react-addons-perf
+## re-render性能监测
 
 我们将从安装React的性能工具开始。
 
@@ -100,7 +106,7 @@ resetState() {
 
 > 注： Perf.start() 不能用在 componentWillMount() 里，也不能用在 render() 里， 并且 react-addons-perf 需要在react@15.5.x版本之后才能用
 
-### 展示组件保持纯净
+## 保持展示组件纯净
 在使用了redux后，rudex 掌握着 react app 的状态，大部分组件成为展示组件，通过接收props完成渲染以及重渲染，因此，这些展示组件需要保持纯净，即对相同的props，渲染的DOM是一样的。这样能够使react快速完成dom diff 比价，减少渲染时间。
 
 下面就是一个纯净组件的例子：

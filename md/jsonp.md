@@ -1,4 +1,9 @@
-### 同源策略
+# Jsonp
+- [同源策略](#同源策略)
+- [什么是jsonp](#什么是jsonp)
+- [jsonp实现示例](#jsonp实现示例)
+
+## 同源策略
 
 在JavaScript中，有一个很重要的安全性限制，被称为“Same-Origin Policy”（同源策略）
 
@@ -6,7 +11,7 @@
 
 甚至不同的子域名之间的页面也不能通过JavaScript代码互相访问。例如，在abc.example.com下的页面，不能向def.example.com提交Ajax请求
 
-### jsonp
+## 什么是jsonp
 
 当请求的数据为json格式时，可以采用json with padding（jsonp）协议进行跨域
 
@@ -18,7 +23,7 @@
 
 > 注意：采用jsonp进行跨域请求时，后台也需配合设置，以符合jsonp返回数据的要求
 
-示例：
+## jsonp实现示例
 1. 原生JavaScript实现
 
 ```javascript

@@ -1,8 +1,12 @@
+# 知乎图片懒加载原理及react实现
+- [原理剖析](#原理剖析)
+- [react实现](#react实现)
+
 刷知乎时，偶然看过网站的图片，先会展示一个高斯模糊的图片，当图片滑动到视口时，才会加载原始图片。[直达链接](https://www.zhihu.com/question/35159928)
 
 觉得这种懒加载效果还挺炫酷，下来之后自己试着写了一个图片懒加载的组件。
 
-### 原理剖析
+## 原理剖析
 
 - 每个图片对应两张图片资源，一个尺寸很小的图片和一个原始图片，两张图片的的宽高比相同。(至少对应两张图片资源，有可能会根据不同设备存在两张原始图片的尺寸)
 
@@ -12,10 +16,11 @@
 
 > 知乎采用前后端同构的方式，返回的数据会同时返回每张图片的尺寸时，这样能够在渲染时直接设置div的大小。但很多情况我们并不能得到图片尺寸的数据，下面的实现就是针对这种情况
 
-### 实现
-```javascript
-// BlurImg.js
+### react实现
 
+**BlurImg.js**
+
+```javascript
 import React, { PropTypes } from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import StackBlur from 'stackblur-canvas'
@@ -53,7 +58,7 @@ class blurImg extends React.Component {
       const imgH = img.height
       const imgW = img.width
       const heightPercent = (imgH / imgW * 100).toFixed(2) // div根据图片大小占位
-      this.wrapper.style.height = `${heightPercent}%`
+      this.wrapper.style.paddingBottom = `${heightPercent}%`
       StackBlur.image(img, this.canvas, 10); // 借助StackBlur达到高斯模糊效果
     })
   }
@@ -76,7 +81,6 @@ class blurImg extends React.Component {
       >
         <canvas
           className={s.canvas}
-          height={0}
           ref={ref => { this.canvas = ref }}
         />
       </div>
@@ -86,10 +90,22 @@ class blurImg extends React.Component {
 
 export default blurImg;
 ```
+
+**BlurImg.css**
+
 ```css
-/* BlurImg.css */
+.container {
+  position: relative;
+  padding-bottom: 56.25%; /* 初始占位宽高比16：9 */
+  height: 0;
+}
+
 .canvas {
-  width: 100% !important; /*保证canvas绘出的模糊图片充满div*/
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important; /* 保证canvas画的图占满整个div */
   height: 100% !important;
 }
+
 ```

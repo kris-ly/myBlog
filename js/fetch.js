@@ -3,8 +3,7 @@ function generateParamsString(params, url) { // 参数拼接
     t: (new Date()).getTime(),
   })
   const string = Object.keys(newParams).reduce((memo, key) =>
-    `${memo}${key}=${newParams[key]}&`
-  , '').slice(0, -1)
+    `${memo}${key}=${newParams[key]}&`, '').slice(0, -1)
 
   if (url) return `${url}${url.indexOf('?') !== -1 ? '&' : '?'}${string}`
   return string
@@ -45,7 +44,12 @@ const request = function request(url, params, isPost = false) {
 }
 
 // 用法示例
-request('http://www.example.com', { user: 'foo' })
-  .then(resp => { console.log(resp)})
-  .catch(e => {console.log(e)})
-
+request('http://www.example.com', {
+    user: 'foo'
+  })
+  .then(resp => {
+    console.log(resp)
+  })
+  .catch(e => {
+    console.log(e)
+  })

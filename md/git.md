@@ -1,10 +1,18 @@
-### Git框架
+# git命令汇总
+- [Git框架介绍](#git框架介绍)
+- [将文件放入版本库的步骤](#将文件放入版本库的步骤)
+- [git常用命令](#git常用命令)
+- [分支测量管理](#分支测量管理)
+- [多人协助](#多人协助)
+- [打tag标签](#打tag标签)
+
+## Git框架介绍
 Git和其他版本控制系统如SVN的一个不同之处就是有暂存区的概念。
 - 工作区（Working Directory）：就是你在电脑里能看到的目录，比如我的learnGit文件夹就是一个工作区
 - 版本库（Repository）：工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。
 Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD。
 
-### 将文件放入版本库的步骤
+## 将文件放入版本库的步骤
 1. 编写一个readme.txt文件
 2. 用命令git add告诉Git，把文件添加到仓库：
   $ git add readme.txt
@@ -12,7 +20,7 @@ Git的版本库里存了很多东西，其中最重要的就是称为stage（或
   $ git commit -m "wrote a readme file"
 > 第二步可同时添加多个文件，最后一个提交。最后一步“”内是自己取得名字，一般是对应的操作。
 
-### 相关命令
+## git常用命令
 
 1. 查看状态 $ git status
 
@@ -124,7 +132,7 @@ $ git branch -d dev
 - 删除分支：git branch -d <name>
 - 删除远程分支：git push origin --delete <name>
 
-### 分支测量管理
+## 分支测量管理
 通常，合并分支时，如果可能，Git会用Fast forward模式，但这种模式下，删除分支后，会丢掉分支信息。
 如果要强制禁用Fast forward模式，Git就会在merge时生成一个新的commit，这样，从分支历史上就可以看出分支信息。
 准备合并dev分支，请注意--no-ff参数，表示禁用Fast forward：
@@ -190,7 +198,7 @@ Feature分支
 开发一个新feature，最好新建一个分支；
 如果要丢弃一个没有被合并过的分支，可以通过git branch -D <name>强行删除。
 
-### 多人协助
+## 多人协助
 多人协作时，大家都会往master和dev分支上推送各自的修改。
 - 现在，你的小伙伴要在dev分支上开发，就必须创建远程origin的dev分支到本地，于是他用这个命令创建本地dev分支：
 ```
@@ -215,7 +223,7 @@ $ git pull
 如果git pull提示“no tracking information”，则说明本地分支和远程分支的链接关系没有创建，用命令git branch --set-upstream branch-name origin/branch-name。
 这就是多人协作的工作模式，一旦熟悉了，就非常简单。
 
-### 标签
+## 打tag标签
 - 命令git tag <name>用于新建一个标签，默认为HEAD，也可以指定一个commit id；
 - git tag -a <tagname> -m "blablabla..."可以指定标签信息；
 - git tag -s <tagname> -m "blablabla..."可以用PGP签名标签；

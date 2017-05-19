@@ -1,6 +1,24 @@
-**配置文件webpack.config.js的基本构成**
+# webpack全指南（含webpack2）
+- [配置文件的基本构成](#配置文件的基本构成)
+- [基本用法](#基本用法)
+  - [使用loader](#使用loader)
+  - [本地起服务](#本地起服务)
+  - [hot及inline](#hot及inline)
+  - [将业务代码和引用代码分离](#将业务代码和引用代码分离)
+  - [处理样式](#处理样式)
+  - [分离打包样式](#分离打包样式)
+  - [打包优化](#打包优化)
+  - [单页面应用](#单页面应用)
+  - [完整配置文件示例](#完整配置文件示例)
+  - [Content Base](#content-base)
+  - [Proxy](#proxy)
+  - [webpack2-tree-shaking](#webpack2-tree-shaking)
+
+
+## 配置文件的基本构成
 
 ```javascript
+// webpack.config.js
 const config = {
   // js entry file
   entry: ['./main.js'],
@@ -52,7 +70,9 @@ const config = {
 module.exports = config;
 ```
 
-1. 使用loader
+## 基本用法
+
+### 使用loader
 
 ```javascript
 // js文件中require
@@ -71,7 +91,9 @@ require("url-loader?mimetype=image/png!./file.png");
 }
 ```
 
-2. webpack dev server 本地起服务
+### 本地起服务
+
+> webpack dev server
 
 ```javascript
 var path = require("path");
@@ -111,6 +133,8 @@ new WebpackDevServer(webpack(config), {
 ```
 
 publicPath指明本地服务器访问位置，采用以上的配置，最终打包的文件为localhost:8080/assets/bundle.js.
+
+### hot及inline
 
 **实现页面Automatic Refresh 及 模块热替换 Hot Module Replacement**
 
@@ -192,7 +216,7 @@ render(<RootContainer />, document.getElementById('react-root'));
 
 
 
-3. 将业务代码和引用代码分离
+### 将业务代码和引用代码分离
 
 ```javascript
 var webpack = require("webpack");
@@ -212,7 +236,7 @@ module.exports = {
 };
 ```
 
-4. 处理样式
+### 处理样式
 
 ```javascript
 {
@@ -235,7 +259,7 @@ module.exports = {
 }
 ```
 
-5. 分离打包样式
+### 分离打包样式
 
 一个多入口的例子，同样适用于单入口
 
@@ -293,7 +317,7 @@ plugins: [
 ]
 ```
 
-6. 打包优化
+### 打包优化
 
 **plugin**
 - 压缩: new webpack.optimize.UglifyJsPlugin()
@@ -318,6 +342,8 @@ new webpack.optimize.UglifyJsPlugin({
 - 包数量限制：new webpack.optimize.LimitChunkCountPlugin({maxChunks: 15})
 
 - 包大小限制：new webpack.optimize.MinChunkSizePlugin({minChunkSize: 10000})
+
+### 单页面应用及多页面应用
 
 **单页面应用**
 
@@ -362,7 +388,7 @@ new AssetsPlugin({
 }),
 ```
 
-**最终的配置文件**
+### 完整配置文件示例
 
 ```javascript
 const path = require('path');
@@ -530,7 +556,7 @@ module.exports = config;
 
 ```
 
-**Content Base**
+### Content Base
 
 根据上述的webpack配置, 生成的bundle为 localhost:8080/assets/bundle.js.
 而webpack-dev-server会服务当前目录的文件，因此为了加载此文件，你需要在当前路径下添加一个index.html。
@@ -558,7 +584,7 @@ devServer: {
   },
 ```
 
-**Proxy**
+### Proxy
 
 Webpack dev server 利用 http-proxy-middleware 将请求proxy 到特定的server.
 
@@ -592,6 +618,8 @@ proxy: [
 ]
 ```
 
+### webpack2-tree-shaking
+
 **Webpack2 tree-shaking 与 es6**
 
 Tree-shaking，即从模块包中排除未使用的 exports 项。
@@ -617,7 +645,7 @@ Webpack2 可以解析并且理解所有 ES6 代码，但只有 import 和 export
 ],
 ```
 
-**webpack-dev-server CLI参数列表:**
+**webpack-dev-server CLI参数列表**
 
 * --content-base <file/directory/url/port>: base path for the content.
 * --quiet: don’t output anything to the console.

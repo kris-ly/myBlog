@@ -1,20 +1,34 @@
-### 背景与颜色的使用
+# Sth about css
+- [背景与颜色的使用](#背景与颜色的使用)
+- [超链接](#超链接)
+- [scrollbar滚动条属性的设置](#scrollbar滚动条属性的设置)
+- [元素边框的设置](#元素边框的设置)
+- [position属性](#position属性)
+- [内联块状元素](#内联块状元素)
+- [水平居中](#水平居中)
+- [垂直居中](#垂直居中)
+- [隐性改变display类型](#隐性改变display类型)
+- [宽度自适应](#宽度自适应)
+- [flex布局详解](#flex布局详解)
+
+
+## 背景与颜色的使用
 颜色的表示方法
 十六进制表示：#ffffff
 rgb函数表示：rgb(255,255,255)
 rgb百分比：  rgb(20%,50%,100%)
 
-1.背景颜色与背景图片的设置
+1. 背景颜色与背景图片的设置
 
 bakcground-color(背景颜色属性)
 语法：background-color:<color> | transparent(透明)
 
-2．background-image(背景图片的应用)
+2. background-image(背景图片的应用)
 
 语法：background-image:url(文件位置) | none
 注：可以在段落中设置背景图片，使某一段产生背景效果
 
-3．background-repeat（背景图片并排方式）
+3. background-repeat（背景图片并排方式）
 
 语法：bakcground-repeat:repeat | repeat-x | repeat-y | no-repeat
 
@@ -47,7 +61,7 @@ background-position:right top
 或
 background-positoin:center  == background-position:bottom
 
-### 美化网页与超链接
+## 超链接
 
 设置anchor网页链接属性的颜色
 语法说明
@@ -65,7 +79,7 @@ background-positoin:center  == background-position:bottom
     a：active {color:#0000ff}
 
 
-### scrollbar滚动条属性的设置
+## scrollbar滚动条属性的设置
 
 属性说明
 - scrollbar-face-color 凸起部分颜色
@@ -78,7 +92,7 @@ background-positoin:center  == background-position:bottom
 
 > 例：body {scrollbar-face-color:green;scrollbar-shadow-color:white}
 
-### 元素边框的设置——border
+## 元素边框的设置
 border-width边框宽度
 语法：border-width:thin | middum | thick | <长度单位>
             (细)  (中等)   (粗)
@@ -106,7 +120,7 @@ outset 3d隆起线
 > 注意：和margin一样，同样有四种设置方法来设置。它也同样可以单边设置border-top-style、border-right-style、border-bottom-style、border-left-style.
 快速设置border属性（即同时设置宽度、颜色、类型）
 
-### position位置属性
+## position属性
 语法：position:absolute | relative | static | fix
 
 设置值说明
@@ -119,7 +133,7 @@ static
 
 >例：position:absolute;top:0;left:0
 
-### 内联块状元素
+## 内联块状元素
 
 内联块状元素（inline-block）就是同时具备内联元素、块状元素的特点，代码display:inline-block就是将元素设置为内联块状元素。(css2.1新增)，img、input标签就是这种内联块状标签。
 
@@ -127,7 +141,7 @@ inline-block元素特点：
 - 和其他元素都在一行上；
 - 元素的高度、宽度、行高以及顶和底边距都可设置。
 
-### 水平居中设置
+## 水平居中
 
 1. 行内元素
 
@@ -142,7 +156,7 @@ inline-block元素特点：
 - 父元素设置position:relative; 子元素设置 position:absolute; top: 50%; transform: translateX(-50%);
 - 父元素display: flex; justify-content: center;
 
-### 垂直居中
+## 垂直居中
 
 1. 父元素高度确定的单行文本
 
@@ -157,14 +171,14 @@ inline-block元素特点：
 - 父元素display: flex; align-items: center;
 
 
-### 隐性改变display类型
+## 隐性改变display类型
 
 有一个有趣的现象就是当为元素（不论之前是什么类型元素，display:none 除外）设置以下 2 个句之一：
 - position : absolute
 - float : left 或 float:right
 元素会自动变为以 display:inline-block 的方式显示，当然就可以设置元素的 width 和 height 了且默认宽度不占满父元素。
 
-###宽度自适应
+## 宽度自适应效果
 
 实现左右栏宽度固定，中间栏宽度自适应
 
@@ -184,7 +198,9 @@ inline-block元素特点：
 1. 父元素设置，display: flex;
 2. 需要自适应的子元素设置flex: 1; margin: 200px 0;
 
-### flex布局
+> 博客中有宽度自适应的demo
+
+## flex布局详解
 
 一个设有「display:flex」或「display:inline-flex」的元素是一个伸缩容器，伸缩容器的子元素被称为为伸缩项目，这些子元素使用伸缩布局模型来排版。
 与布局计算偏向使用书写模式方向的块布局与行内布局不同，伸缩布局偏向使用伸缩流方向。为了让描述伸缩布局变得更容易，本章节定义一系列相对于伸缩流的术语。「flex-flow」的值决定了这些术语如何对应到物理方向（顶／右／底／左）、物理轴（垂直／水平）、物理大小（宽度／高度）。
