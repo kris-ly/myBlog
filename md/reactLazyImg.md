@@ -1,6 +1,7 @@
+
 # 知乎图片懒加载原理及react实现
-- [原理剖析](#原理剖析)
-- [react实现](#react实现)
+
+[toc]
 
 刷知乎时，偶然看过网站的图片，先会展示一个高斯模糊的图片，当图片滑动到视口时，才会加载原始图片。[直达链接](https://www.zhihu.com/question/35159928)
 
@@ -16,7 +17,7 @@
 
 > 知乎采用前后端同构的方式，返回的数据会同时返回每张图片的尺寸时，这样能够在渲染时直接设置div的大小。但很多情况我们并不能得到图片尺寸的数据，下面的实现就是针对这种情况
 
-### react实现
+## react实现
 
 **BlurImg.js**
 
@@ -108,4 +109,75 @@ export default blurImg;
   height: 100% !important;
 }
 
+```
+
+## 2017.6.16更新
+
+StackBlur.image使用canvas达到图片模糊的效果，canvas画图存在严重的跨域问题。因此直接借助css的filter属性实现模糊效果，并且代码更加简洁。代码如下：
+
+**BlurImg.js**
+
+```javaScript
+import React, { PropTypes } from 'react';
+import s from './BlurImg.css';
+
+class blurImg extends React.PureComponent {
+  static propTypes = {
+    originSrc: PropTypes.string.isRequired,
+    blurSrc: PropTypes.string.isRequired,
+    isShow: PropTypes.bool.isRequired, // 图片懒加载，控制是否展示原图片
+  };
+
+  static imgLoad(src, resFunc) {
+    return new Promise((resolve, reject) => {
+      const image = new Image();
+      image.src = src;
+      image.onload = () => {
+        if (image.complete) resolve(image)
+        reject(image)
+      }
+      image.onerror = () => { reject(image) }
+    })
+      .then((img) => {
+        resFunc(img)
+      })
+  }
+
+  componentWillReceiveProps(np) {
+    if (np.isShow && !this.props.isShow) {
+      const { originSrc } = this.props
+      blurImg.imgLoad(originSrc, (img) => {
+        img.style.width = '100%';
+        this.wrapper.replaceWith(img)
+      })
+    }
+  }
+
+  render() {
+    const { blurSrc } = this.props
+    return (
+      <div
+        className={s.container}
+        ref={ref => { this.wrapper = ref }}
+      >
+        <img
+          src={blurSrc}
+          className={s.blurImg}
+          alt={''}
+        />
+      </div>
+    );
+  }
+}
+
+export default blurImg;
+```
+**BlurImg.css**
+
+```css
+.blurImg {
+  width: 100% !important;
+  height: 100% !important;
+  filter: blur(5px);
+}
 ```
