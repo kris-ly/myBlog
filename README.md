@@ -33,3 +33,5 @@
 - [fetch实用封装](./js/fetch.js)
 - [react渲染性能提升](./md/speedupReact.md)
 - [知乎图片懒加载原理及react实现](./md/reactLazyImg.md)
+- [网页渲染性能优化](./md/renderPerf.md)
+- [Navigation Timing —— 网页性能监控](./md/naviTiming.md)
