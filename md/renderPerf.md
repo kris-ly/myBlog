@@ -20,11 +20,7 @@
 
 
 ```
-graph LR
-JavaScript-->样式计算
-样式计算-->布局
-布局-->绘制
-绘制-->合成
+JavaScript --> 样式计算 -->布局 -->绘制 -->合成
 ```
 - JavaScript。一般来说，我们会使用 JavaScript 来实现一些视觉变化的效果。比如用 jQuery 的 animate 函数做一个动画、对一个数据集进行排序或者往页面里添加一些 DOM 元素等。当然，除了 JavaScript，还有其他一些常用方法也可以实现视觉变化效果，比如：CSS Animations、Transitions 和 Web Animation API。
 - 样式计算。此过程是根据匹配选择器（例如 .headline 或 .nav > .nav__item）计算出哪些元素应用哪些 CSS 规则的过程。从中知道规则之后，将应用规则并计算每个元素的最终样式。

@@ -35,3 +35,4 @@
 - [知乎图片懒加载原理及react实现](./md/reactLazyImg.md)
 - [网页渲染性能优化](./md/renderPerf.md)
 - [Navigation Timing —— 网页性能监控](./md/naviTiming.md)
+- [pm2教程](./md/pm2.md)
