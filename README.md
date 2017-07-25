@@ -19,13 +19,14 @@
   > - [css实现哆啦A梦](./demos/Doraemon.html) —— [查看demo](https://jsfiddle.net/kris_ly/amjn9LsL/)
   > - [canvas实现钟表](./demos/canvas_clock.html) —— [查看demo](https://jsfiddle.net/kris_ly/ouekodz8/)
 
-
-### 2016 - 2017
-
+- [js实现拍照上传功能](./demos/photo_upload.html) —— [查看demo](https://jsfiddle.net/kris_ly/vsf2da2o/)
 - [前端入坑指南(网上内容提炼，侵删)](http://note.youdao.com/noteshare?id=2a89ad8ed28fa8d80ba83f709ebe2f4d)
+
+## 2016 - 2017
+
 - [关于es6，我们需要了解的（网上内容提炼，侵删）](http://note.youdao.com/noteshare?id=be964718dab507a48803b6daca326b44)
 - [实现底部栏始终固定在页面底部](./demos/stickyfooter.html) —— [查看demo](https://jsfiddle.net/kris_ly/8gnn5opd/)
-- [js实现拍照上传功能](./demos/photo_upload.html) —— [查看demo](https://jsfiddle.net/kris_ly/vsf2da2o/)
+
 - [promise实现lazyman](./js/lazyman.js)
 - [setTimeout & setInterval](./md/timer.md)
 - [webpack全指南（含webpack2）](./md/webpack.md)
@@ -35,4 +36,4 @@
 - [知乎图片懒加载原理及react实现](./md/reactLazyImg.md)
 - [网页渲染性能优化](./md/renderPerf.md)
 - [Navigation Timing —— 网页性能监控](./md/naviTiming.md)
-- [pm2教程](./md/pm2.md)
+- [pm2入门教程](./md/pm2.md)
