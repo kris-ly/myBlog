@@ -37,3 +37,4 @@
 - [网页渲染性能优化](./md/renderPerf.md)
 - [Navigation Timing —— 网页性能监控](./md/naviTiming.md)
 - [pm2入门教程](./md/pm2.md)
+- [mobx指南以及与redux的对比](./md/reduxMobx.md)
