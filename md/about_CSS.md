@@ -1,7 +1,6 @@
 # Sth about css
 - [背景与颜色的使用](#背景与颜色的使用)
 - [超链接](#超链接)
-- [scrollbar滚动条属性的设置](#scrollbar滚动条属性的设置)
 - [元素边框的设置](#元素边框的设置)
 - [position属性](#position属性)
 - [内联块状元素](#内联块状元素)
@@ -78,19 +77,6 @@ background-positoin:center  == background-position:bottom
           font-style:italic;font-size:16pt}
     a：active {color:#0000ff}
 
-
-## scrollbar滚动条属性的设置
-
-属性说明
-- scrollbar-face-color 凸起部分颜色
-- scrollbar-shadow-color 阴影
-- scrollbar-highlight-color 边框
-- scrollbar-3dlight-color 3d光影
-- scrollbar-darkshadow-color 3d阴影
-- scrollbar-track-color 凹下部分颜色
-- scrollbar-arrow-color小三角颜色
-
-> 例：body {scrollbar-face-color:green;scrollbar-shadow-color:white}
 
 ## 元素边框的设置
 border-width边框宽度
